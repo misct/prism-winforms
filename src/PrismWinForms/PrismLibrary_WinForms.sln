@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.WinForms", "Desktop\P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.MefExtensions.WinForms", "Desktop\Prism.MefExtensions\Prism.MefExtensions.WinForms.csproj", "{B472C89D-AA11-4845-BD1A-87C3FF91F83C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Mvvm", "Prism.Mvvm\Prism.Mvvm.WinForms.csproj", "{93EF615D-40EE-469E-BCF4-CD1235944112}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Mvvm.WinForms", "Prism.Mvvm\Prism.Mvvm.WinForms.csproj", "{93EF615D-40EE-469E-BCF4-CD1235944112}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Interactivity.WinForms", "Desktop\Prism.Interactivity\Prism.Interactivity.WinForms.csproj", "{7A7BD6E1-DC9E-440D-9277-6C488C84A53F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{93EF615D-40EE-469E-BCF4-CD1235944112}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93EF615D-40EE-469E-BCF4-CD1235944112}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93EF615D-40EE-469E-BCF4-CD1235944112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7BD6E1-DC9E-440D-9277-6C488C84A53F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7BD6E1-DC9E-440D-9277-6C488C84A53F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7BD6E1-DC9E-440D-9277-6C488C84A53F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7BD6E1-DC9E-440D-9277-6C488C84A53F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
