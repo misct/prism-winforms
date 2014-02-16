@@ -47,5 +47,3 @@ _ReSharper*/
 #NuGet
 packages/
 NuGet.exe
-!/src/PrismLibrary/packages/repositories.config
-!/src/PrismWinForms/packages/repositories.config
