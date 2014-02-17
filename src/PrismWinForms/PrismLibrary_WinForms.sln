@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Mvvm.WinForms", "Pris
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.Interactivity.WinForms", "Desktop\Prism.Interactivity\Prism.Interactivity.WinForms.csproj", "{7A7BD6E1-DC9E-440D-9277-6C488C84A53F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.UnityExtensions.WinForms", "Desktop\Prism.UnityExtensions\Prism.UnityExtensions.WinForms.csproj", "{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +35,15 @@ Global
 		{7A7BD6E1-DC9E-440D-9277-6C488C84A53F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A7BD6E1-DC9E-440D-9277-6C488C84A53F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A7BD6E1-DC9E-440D-9277-6C488C84A53F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
 	EndGlobalSection
 EndGlobal
