@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prism", "Prism", "{0374B3A3-61A3-470C-A534-EC3FAAE2C4AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.WinForms", "..\..\PrismWinForms\Desktop\Prism\Prism.WinForms.csproj", "{7D81DF4D-EFF4-46AB-B2A0-13D2C58DD7E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prism.UnityExtensions.WinForms", "..\..\PrismWinForms\Desktop\Prism.UnityExtensions\Prism.UnityExtensions.WinForms.csproj", "{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregation.WinForms", "EventAggregation.WinForms\EventAggregation.WinForms.csproj", "{737A4C07-6030-49F7-A0D6-9C88193CC590}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{71C2B33E-B31F-40DC-9CB9-805DF8CEFCD6}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAggregation.Infrastructure.WinForms", "EventAggregation.Infrastructure.WinForms\EventAggregation.Infrastructure.WinForms.csproj", "{EE20FC6E-C10B-4513-A593-02AD1B173CC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleA.WinForms", "ModuleA.WinForms\ModuleA.WinForms.csproj", "{2A4D4246-F6E5-4D5C-A283-DD9FC8B0BD9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleB.WinForms", "ModuleB.WinForms\ModuleB.WinForms.csproj", "{B6685428-076E-4909-A537-3725971E9A81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D81DF4D-EFF4-46AB-B2A0-13D2C58DD7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D81DF4D-EFF4-46AB-B2A0-13D2C58DD7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D81DF4D-EFF4-46AB-B2A0-13D2C58DD7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D81DF4D-EFF4-46AB-B2A0-13D2C58DD7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{737A4C07-6030-49F7-A0D6-9C88193CC590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{737A4C07-6030-49F7-A0D6-9C88193CC590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{737A4C07-6030-49F7-A0D6-9C88193CC590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{737A4C07-6030-49F7-A0D6-9C88193CC590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE20FC6E-C10B-4513-A593-02AD1B173CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE20FC6E-C10B-4513-A593-02AD1B173CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE20FC6E-C10B-4513-A593-02AD1B173CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE20FC6E-C10B-4513-A593-02AD1B173CC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A4D4246-F6E5-4D5C-A283-DD9FC8B0BD9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A4D4246-F6E5-4D5C-A283-DD9FC8B0BD9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A4D4246-F6E5-4D5C-A283-DD9FC8B0BD9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A4D4246-F6E5-4D5C-A283-DD9FC8B0BD9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6685428-076E-4909-A537-3725971E9A81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6685428-076E-4909-A537-3725971E9A81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6685428-076E-4909-A537-3725971E9A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6685428-076E-4909-A537-3725971E9A81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7D81DF4D-EFF4-46AB-B2A0-13D2C58DD7E7} = {0374B3A3-61A3-470C-A534-EC3FAAE2C4AB}
+		{D52A992D-2979-4D2B-BF5B-DE1D1D4C52AE} = {0374B3A3-61A3-470C-A534-EC3FAAE2C4AB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal
