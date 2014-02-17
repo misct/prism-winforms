@@ -86,6 +86,8 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BasicMVVMQuickstart_WinForms.ViewModels.MainWindowViewModel.datasource" />
+    <None Include="Properties\DataSources\BasicMVVMQuickstart_WinForms.ViewModels.QuestionnaireViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

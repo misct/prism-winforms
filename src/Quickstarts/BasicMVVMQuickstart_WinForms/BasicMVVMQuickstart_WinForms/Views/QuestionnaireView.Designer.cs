@@ -28,66 +28,23 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.colorGroup = new System.Windows.Forms.GroupBox();
-			this.colorGreenInput = new System.Windows.Forms.RadioButton();
-			this.colorBlueInput = new System.Windows.Forms.RadioButton();
-			this.colorRedInput = new System.Windows.Forms.RadioButton();
+			this.components = new System.ComponentModel.Container();
 			this.colorLabel = new System.Windows.Forms.Label();
 			this.questInput = new System.Windows.Forms.TextBox();
+			this.dataSrc = new System.Windows.Forms.BindingSource(this.components);
+			this.vmSrc = new System.Windows.Forms.BindingSource(this.components);
 			this.questLabel = new System.Windows.Forms.Label();
 			this.ageInput = new System.Windows.Forms.NumericUpDown();
 			this.ageLabel = new System.Windows.Forms.Label();
 			this.nameInput = new System.Windows.Forms.TextBox();
 			this.nameLabel = new System.Windows.Forms.Label();
-			this.colorGroup.SuspendLayout();
+			this.colorInput = new System.Windows.Forms.ListBox();
+			this.colorSrc = new System.Windows.Forms.BindingSource(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.dataSrc)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.vmSrc)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.ageInput)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.colorSrc)).BeginInit();
 			this.SuspendLayout();
-			// 
-			// colorGroup
-			// 
-			this.colorGroup.Controls.Add(this.colorGreenInput);
-			this.colorGroup.Controls.Add(this.colorBlueInput);
-			this.colorGroup.Controls.Add(this.colorRedInput);
-			this.colorGroup.Dock = System.Windows.Forms.DockStyle.Top;
-			this.colorGroup.Location = new System.Drawing.Point(0, 148);
-			this.colorGroup.Name = "colorGroup";
-			this.colorGroup.Padding = new System.Windows.Forms.Padding(8, 0, 8, 8);
-			this.colorGroup.Size = new System.Drawing.Size(477, 72);
-			this.colorGroup.TabIndex = 16;
-			this.colorGroup.TabStop = false;
-			// 
-			// colorGreenInput
-			// 
-			this.colorGreenInput.Dock = System.Windows.Forms.DockStyle.Top;
-			this.colorGreenInput.Location = new System.Drawing.Point(8, 47);
-			this.colorGreenInput.Name = "colorGreenInput";
-			this.colorGreenInput.Size = new System.Drawing.Size(461, 17);
-			this.colorGreenInput.TabIndex = 2;
-			this.colorGreenInput.TabStop = true;
-			this.colorGreenInput.Text = "Green";
-			this.colorGreenInput.UseVisualStyleBackColor = true;
-			// 
-			// colorBlueInput
-			// 
-			this.colorBlueInput.Dock = System.Windows.Forms.DockStyle.Top;
-			this.colorBlueInput.Location = new System.Drawing.Point(8, 30);
-			this.colorBlueInput.Name = "colorBlueInput";
-			this.colorBlueInput.Size = new System.Drawing.Size(461, 17);
-			this.colorBlueInput.TabIndex = 1;
-			this.colorBlueInput.TabStop = true;
-			this.colorBlueInput.Text = "Blue";
-			this.colorBlueInput.UseVisualStyleBackColor = true;
-			// 
-			// colorRedInput
-			// 
-			this.colorRedInput.Dock = System.Windows.Forms.DockStyle.Top;
-			this.colorRedInput.Location = new System.Drawing.Point(8, 13);
-			this.colorRedInput.Name = "colorRedInput";
-			this.colorRedInput.Size = new System.Drawing.Size(461, 17);
-			this.colorRedInput.TabIndex = 0;
-			this.colorRedInput.TabStop = true;
-			this.colorRedInput.Text = "Red";
-			this.colorRedInput.UseVisualStyleBackColor = true;
 			// 
 			// colorLabel
 			// 
@@ -101,11 +58,22 @@
 			// 
 			// questInput
 			// 
+			this.questInput.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataSrc, "Quest", true));
 			this.questInput.Dock = System.Windows.Forms.DockStyle.Top;
 			this.questInput.Location = new System.Drawing.Point(0, 106);
 			this.questInput.Name = "questInput";
 			this.questInput.Size = new System.Drawing.Size(477, 20);
 			this.questInput.TabIndex = 14;
+			// 
+			// dataSrc
+			// 
+			this.dataSrc.AllowNew = false;
+			this.dataSrc.DataMember = "Questionnaire";
+			this.dataSrc.DataSource = this.vmSrc;
+			// 
+			// vmSrc
+			// 
+			this.vmSrc.DataSource = typeof(BasicMVVMQuickstart_WinForms.ViewModels.QuestionnaireViewModel);
 			// 
 			// questLabel
 			// 
@@ -119,6 +87,7 @@
 			// 
 			// ageInput
 			// 
+			this.ageInput.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.dataSrc, "Age", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
 			this.ageInput.Dock = System.Windows.Forms.DockStyle.Top;
 			this.ageInput.Location = new System.Drawing.Point(0, 64);
 			this.ageInput.Name = "ageInput";
@@ -137,6 +106,7 @@
 			// 
 			// nameInput
 			// 
+			this.nameInput.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.dataSrc, "Name", true));
 			this.nameInput.Dock = System.Windows.Forms.DockStyle.Top;
 			this.nameInput.Location = new System.Drawing.Point(0, 22);
 			this.nameInput.Name = "nameInput";
@@ -153,11 +123,27 @@
 			this.nameLabel.TabIndex = 9;
 			this.nameLabel.Text = "Name";
 			// 
+			// colorInput
+			// 
+			this.colorInput.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.dataSrc, "FavoriteColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.colorInput.DataSource = this.colorSrc;
+			this.colorInput.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.colorInput.FormattingEnabled = true;
+			this.colorInput.Location = new System.Drawing.Point(0, 148);
+			this.colorInput.Name = "colorInput";
+			this.colorInput.Size = new System.Drawing.Size(477, 81);
+			this.colorInput.TabIndex = 16;
+			// 
+			// colorSrc
+			// 
+			this.colorSrc.DataMember = "AllColors";
+			this.colorSrc.DataSource = this.vmSrc;
+			// 
 			// QuestionnaireView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.colorGroup);
+			this.Controls.Add(this.colorInput);
 			this.Controls.Add(this.colorLabel);
 			this.Controls.Add(this.questInput);
 			this.Controls.Add(this.questLabel);
@@ -167,8 +153,10 @@
 			this.Controls.Add(this.nameLabel);
 			this.Name = "QuestionnaireView";
 			this.Size = new System.Drawing.Size(477, 229);
-			this.colorGroup.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataSrc)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.vmSrc)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.ageInput)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.colorSrc)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -176,10 +164,6 @@
 
 		#endregion
 
-		private System.Windows.Forms.GroupBox colorGroup;
-		private System.Windows.Forms.RadioButton colorGreenInput;
-		private System.Windows.Forms.RadioButton colorBlueInput;
-		private System.Windows.Forms.RadioButton colorRedInput;
 		private System.Windows.Forms.Label colorLabel;
 		private System.Windows.Forms.TextBox questInput;
 		private System.Windows.Forms.Label questLabel;
@@ -187,5 +171,9 @@
 		private System.Windows.Forms.Label ageLabel;
 		private System.Windows.Forms.TextBox nameInput;
 		private System.Windows.Forms.Label nameLabel;
+		private System.Windows.Forms.ListBox colorInput;
+		private System.Windows.Forms.BindingSource vmSrc;
+		private System.Windows.Forms.BindingSource dataSrc;
+		private System.Windows.Forms.BindingSource colorSrc;
 	}
 }

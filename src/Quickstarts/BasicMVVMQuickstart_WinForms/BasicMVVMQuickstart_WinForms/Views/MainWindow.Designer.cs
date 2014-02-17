@@ -28,10 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.titleLabel = new System.Windows.Forms.Label();
 			this.resetButton = new System.Windows.Forms.Button();
 			this.submitButton = new System.Windows.Forms.Button();
-			this.questionnaireView1 = new BasicMVVMQuickstart_WinForms.Views.QuestionnaireView();
+			this.qaView = new BasicMVVMQuickstart_WinForms.Views.QuestionnaireView();
+			this.vmSrc = new System.Windows.Forms.BindingSource(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.vmSrc)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// titleLabel
@@ -54,6 +57,7 @@
 			this.resetButton.TabIndex = 2;
 			this.resetButton.Text = "&Reset";
 			this.resetButton.UseVisualStyleBackColor = true;
+			this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
 			// 
 			// submitButton
 			// 
@@ -64,14 +68,20 @@
 			this.submitButton.TabIndex = 3;
 			this.submitButton.Text = "&Submit";
 			this.submitButton.UseVisualStyleBackColor = true;
+			this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
 			// 
-			// questionnaireView1
+			// qaView
 			// 
-			this.questionnaireView1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.questionnaireView1.Location = new System.Drawing.Point(16, 53);
-			this.questionnaireView1.Name = "questionnaireView1";
-			this.questionnaireView1.Size = new System.Drawing.Size(477, 229);
-			this.questionnaireView1.TabIndex = 1;
+			this.qaView.DataContext = typeof(BasicMVVMQuickstart_WinForms.ViewModels.QuestionnaireViewModel);
+			this.qaView.Dock = System.Windows.Forms.DockStyle.Top;
+			this.qaView.Location = new System.Drawing.Point(16, 53);
+			this.qaView.Name = "qaView";
+			this.qaView.Size = new System.Drawing.Size(477, 218);
+			this.qaView.TabIndex = 1;
+			// 
+			// vmSrc
+			// 
+			this.vmSrc.DataSource = typeof(BasicMVVMQuickstart_WinForms.ViewModels.MainWindowViewModel);
 			// 
 			// MainWindow
 			// 
@@ -82,12 +92,13 @@
 			this.ClientSize = new System.Drawing.Size(509, 311);
 			this.Controls.Add(this.submitButton);
 			this.Controls.Add(this.resetButton);
-			this.Controls.Add(this.questionnaireView1);
+			this.Controls.Add(this.qaView);
 			this.Controls.Add(this.titleLabel);
 			this.MinimumSize = new System.Drawing.Size(525, 350);
 			this.Name = "MainWindow";
 			this.Padding = new System.Windows.Forms.Padding(16, 8, 16, 8);
 			this.Text = "Basic MVVM Quickstart";
+			((System.ComponentModel.ISupportInitialize)(this.vmSrc)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -97,6 +108,7 @@
 		private System.Windows.Forms.Label titleLabel;
 		private System.Windows.Forms.Button resetButton;
 		private System.Windows.Forms.Button submitButton;
-		private QuestionnaireView questionnaireView1;
+		private QuestionnaireView qaView;
+		private System.Windows.Forms.BindingSource vmSrc;
 	}
 }
