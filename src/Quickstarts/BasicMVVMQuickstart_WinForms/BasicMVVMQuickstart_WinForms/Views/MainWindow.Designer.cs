@@ -34,6 +34,7 @@
 			this.submitButton = new System.Windows.Forms.Button();
 			this.qaView = new BasicMVVMQuickstart_WinForms.Views.QuestionnaireView();
 			this.vmSrc = new System.Windows.Forms.BindingSource(this.components);
+			this.vmLocator = new Microsoft.Practices.Prism.Mvvm.ViewModelLocator();
 			((System.ComponentModel.ISupportInitialize)(this.vmSrc)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -72,7 +73,7 @@
 			// 
 			// qaView
 			// 
-			this.qaView.DataContext = typeof(BasicMVVMQuickstart_WinForms.ViewModels.QuestionnaireViewModel);
+			this.qaView.DataBindings.Add(new System.Windows.Forms.Binding("DataContext", this.vmSrc, "QuestionnaireViewModel", true, System.Windows.Forms.DataSourceUpdateMode.Never));
 			this.qaView.Dock = System.Windows.Forms.DockStyle.Top;
 			this.qaView.Location = new System.Drawing.Point(16, 53);
 			this.qaView.Name = "qaView";
@@ -88,6 +89,7 @@
 			this.AcceptButton = this.submitButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.vmLocator.SetAutoWireViewModel(this, true);
 			this.CancelButton = this.resetButton;
 			this.ClientSize = new System.Drawing.Size(509, 311);
 			this.Controls.Add(this.submitButton);
@@ -110,5 +112,6 @@
 		private System.Windows.Forms.Button submitButton;
 		private QuestionnaireView qaView;
 		private System.Windows.Forms.BindingSource vmSrc;
+		private Microsoft.Practices.Prism.Mvvm.ViewModelLocator vmLocator;
 	}
 }

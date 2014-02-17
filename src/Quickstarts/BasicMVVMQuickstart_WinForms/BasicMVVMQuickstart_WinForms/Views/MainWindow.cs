@@ -16,11 +16,8 @@ namespace BasicMVVMQuickstart_WinForms.Views
 		public MainWindow()
 		{
 			InitializeComponent();
-
-			var vm = new MainWindowViewModel();
-
-			this.DataContext = vm;
 		}
+
 		MainWindowViewModel _vm;
 
 		public object DataContext
@@ -31,11 +28,7 @@ namespace BasicMVVMQuickstart_WinForms.Views
 				var vm = value as MainWindowViewModel;
 				if (_vm == vm)
 					return;
-				_vm = vm;
-				vmSrc.DataSource = vm;
-				qaView.DataContext = (vm != null ?
-					vm.QuestionnaireViewModel :
-					null);
+				vmSrc.DataSource = _vm = vm;
 			}
 		}
 

@@ -77,6 +77,9 @@
     <Compile Include="ICommand.WinForms.cs" />
     <Compile Include="TaskHelper.cs" />
     <Compile Include="ViewModelLocationProvider.cs" />
+    <Compile Include="ViewModelLocator.WinForms.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

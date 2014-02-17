@@ -18,15 +18,21 @@ namespace BasicMVVMQuickstart_WinForms.Views
 			InitializeComponent();
 		}
 
+		QuestionnaireViewModel _vm;
+
+		[DefaultValue(null)]
 		public object DataContext
 		{
 			get
 			{
-				return vmSrc.DataSource;
+				return _vm;
 			}
 			set
 			{
-				vmSrc.DataSource = value;
+				var vm = value as QuestionnaireViewModel;
+				if (_vm == vm)
+					return;
+				vmSrc.DataSource = _vm = vm;
 			}
 		}
 	}
