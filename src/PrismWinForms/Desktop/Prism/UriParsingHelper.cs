@@ -15,9 +15,7 @@
 // places, or events is intended or should be inferred.
 //===================================================================================
 using System;
-#if REGIONS
 using Microsoft.Practices.Prism.Regions;
-#endif
 
 namespace Microsoft.Practices.Prism
 {
@@ -43,7 +41,7 @@ namespace Microsoft.Practices.Prism
         {
             return EnsureAbsolute(uri).AbsolutePath;
         }
-#if REGIONS
+		
 		/// <summary>
         /// Parses the query of <paramref name="uri"/> into a dictionary.
         /// </summary>
@@ -54,7 +52,7 @@ namespace Microsoft.Practices.Prism
 
             return new NavigationParameters(query);
         }
-#endif
+		
         private static Uri EnsureAbsolute(Uri uri)
         {
             if (uri.IsAbsoluteUri)
