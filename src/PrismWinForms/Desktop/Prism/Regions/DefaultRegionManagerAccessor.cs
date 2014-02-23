@@ -15,7 +15,9 @@
 // places, or events is intended or should be inferred.
 //===================================================================================
 using System;
-using System.Windows;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Microsoft.Practices.Prism.Regions
 {
@@ -29,8 +31,8 @@ namespace Microsoft.Practices.Prism.Regions
         /// a delegate that is available in the public API of the class (no private or anonymous delegates allowed).</remarks>
         public event EventHandler UpdatingRegions
         {
-            add { RegionManager.UpdatingRegions += value; }
-            remove { RegionManager.UpdatingRegions -= value; }
+            add { } //add { RegionManager.UpdatingRegions += value; }
+            remove { } //remove { RegionManager.UpdatingRegions -= value; }
         }
 
         /// <summary>
@@ -39,10 +41,13 @@ namespace Microsoft.Practices.Prism.Regions
         /// <param name="element">The object to adapt. This is typically a container (i.e a control).</param>
         /// <returns>The name of the region that should be created when 
         /// the RegionManager is also set in this element.</returns>
-        public string GetRegionName(DependencyObject element)
+        public string GetRegionName(object element)
         {
-            if (element == null) throw new ArgumentNullException("element");
-            return element.GetValue(RegionManager.RegionNameProperty) as string;
+			if (element == null) throw new ArgumentNullException("element");
+			var component = element as Component;
+			if (component == null) throw new ArgumentException("Expected element of type System.ComponentModel.Component.", "element");
+
+			return component.GetAttachedValue("RegionName") as string;
         }
 
         /// <summary>
@@ -50,10 +55,13 @@ namespace Microsoft.Practices.Prism.Regions
         /// </summary>
         /// <param name="element">The target element.</param>
         /// <returns>The <see cref="IRegionManager"/> attached to the <paramref name="element"/> element.</returns>
-        public IRegionManager GetRegionManager(DependencyObject element)
+		public IRegionManager GetRegionManager(object element)
         {
             if (element == null) throw new ArgumentNullException("element");
-            return element.GetValue(RegionManager.RegionManagerProperty) as IRegionManager;
+			var component = element as Component;
+			if (component == null) throw new ArgumentException("Expected element of type System.ComponentModel.Component.", "element");
+
+			return component.GetAttachedValue("RegionManager") as IRegionManager;
         }
     }
 }

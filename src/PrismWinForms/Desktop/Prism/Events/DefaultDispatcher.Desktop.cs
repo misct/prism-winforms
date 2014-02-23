@@ -15,8 +15,7 @@
 // places, or events is intended or should be inferred.
 //===================================================================================
 using System;
-//using System.Windows;
-//using System.Windows.Threading;
+using System.Threading;
 
 namespace Microsoft.Practices.Prism.Events
 {
@@ -26,6 +25,8 @@ namespace Microsoft.Practices.Prism.Events
     [Obsolete]
     public class DefaultDispatcher : IDispatcherFacade
     {
+		internal static SynchronizationContext UISynchronizationContext;
+
         /// <summary>
         /// Forwards the BeginInvoke to the current application's <see cref="Dispatcher"/>.
         /// </summary>
@@ -33,10 +34,9 @@ namespace Microsoft.Practices.Prism.Events
         /// <param name="arg">Arguments to pass to the invoked method.</param>
         public void BeginInvoke(Delegate method, object arg)
         {
-			//if (Application.Current != null)
-			//{
-			//	Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, method, arg);
-			//}
+			var sc = UISynchronizationContext;
+			if (sc != null)
+				sc.Post(o => method.DynamicInvoke(o), arg);
         }
     }
 }

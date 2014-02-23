@@ -53,7 +53,20 @@ namespace Microsoft.Practices.Prism
         /// Gets the shell user interface
         /// </summary>
         /// <value>The shell user interface.</value>
-        protected object Shell { get; set; }
+		private object _shell;
+
+		public object Shell
+		{
+			get { return _shell; }
+			set
+			{
+				_shell = value;
+				// We need a place to get the UISynchronizationContext and this
+				// is it until we remove DefaultDispatcher since it's obsolete.
+				Microsoft.Practices.Prism.Events.DefaultDispatcher.UISynchronizationContext = System.Threading.SynchronizationContext.Current;
+			}
+		}
+
 
         /// <summary>
         /// Create the <see cref="ILoggerFacade" /> used by the bootstrapper.

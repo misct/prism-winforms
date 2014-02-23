@@ -24,7 +24,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>false</RunCodeAnalysis>
-    <DocumentationFile>bin\Debug\Microsoft.Practices.Prism.XML</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <CodeAnalysisRules>
     </CodeAnalysisRules>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
@@ -61,6 +62,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -272,10 +275,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ComponentHelper.cs" />
     <Compile Include="Regions\AllActiveRegion.cs" />
     <Compile Include="Regions\Behaviors\AutoPopulateRegionBehavior.cs" />
     <Compile Include="Regions\Behaviors\RegionCreationException.cs" />
     <Compile Include="Regions\Behaviors\RegionCreationException.Desktop.cs" />
+    <Compile Include="Regions\DefaultRegionManagerAccessor.cs" />
     <Compile Include="Regions\IConfirmNavigationRequest.cs" />
     <Compile Include="Regions\INavigateAsync.cs" />
     <Compile Include="Regions\INavigationAware.cs" />
@@ -286,6 +291,7 @@
     <Compile Include="Regions\IRegionBehaviorFactory.cs" />
     <Compile Include="Regions\IRegionCollection.cs" />
     <Compile Include="Regions\IRegionManager.cs" />
+    <Compile Include="Regions\IRegionManagerAccessor.cs" />
     <Compile Include="Regions\IRegionMemberLifetime.cs" />
     <Compile Include="Regions\IRegionNavigationContentLoader.cs" />
     <Compile Include="Regions\IRegionNavigationJournal.cs" />
@@ -313,6 +319,9 @@
     <Compile Include="Regions\RegionNavigationJournal.cs" />
     <Compile Include="Regions\RegionNavigationJournalEntry.cs" />
     <Compile Include="Regions\RegionNavigationService.cs" />
+    <Compile Include="Regions\RegionProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Regions\RegionViewRegistry.cs" />
     <Compile Include="Regions\SingleActiveRegion.cs" />
     <Compile Include="Regions\SyncActiveStateAttribute.cs" />
