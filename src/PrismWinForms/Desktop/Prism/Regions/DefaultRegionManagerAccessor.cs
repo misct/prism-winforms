@@ -23,6 +23,8 @@ namespace Microsoft.Practices.Prism.Regions
 {
     internal class DefaultRegionManagerAccessor : IRegionManagerAccessor
     {
+
+
         /// <summary>
         /// Notification used by attached behaviors to update the region managers appropriatelly if needed to.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Microsoft.Practices.Prism.Regions
 			var component = element as Component;
 			if (component == null) throw new ArgumentException("Expected element of type System.ComponentModel.Component.", "element");
 
-			return component.GetAttachedValue("RegionName") as string;
+			return component.GetAssignedValue(RegionManager.RegionNameProperty) as string;
         }
 
         /// <summary>
@@ -61,7 +63,7 @@ namespace Microsoft.Practices.Prism.Regions
 			var component = element as Component;
 			if (component == null) throw new ArgumentException("Expected element of type System.ComponentModel.Component.", "element");
 
-			return component.GetAttachedValue("RegionManager") as IRegionManager;
+			return component.GetAssignedValue(RegionManager.RegionManagerProperty) as IRegionManager;
         }
     }
 }

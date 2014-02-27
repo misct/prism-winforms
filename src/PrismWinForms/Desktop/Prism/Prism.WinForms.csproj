@@ -255,9 +255,12 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AssignedProperty.cs" />
+    <Compile Include="AssignedPropertyChangedEventArgs.cs" />
     <Compile Include="Bootstrapper.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ComponentAssignedPropertyHelper.cs" />
     <Compile Include="Events\CompositePresentationEvent.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -275,7 +278,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ComponentHelper.cs" />
+    <Compile Include="PropertyMetaData.cs" />
     <Compile Include="Regions\AllActiveRegion.cs" />
     <Compile Include="Regions\Behaviors\AutoPopulateRegionBehavior.cs" />
     <Compile Include="Regions\Behaviors\RegionCreationException.cs" />
@@ -311,6 +314,7 @@
     <Compile Include="Regions\RegionBehavior.cs" />
     <Compile Include="Regions\RegionBehaviorCollection.cs" />
     <Compile Include="Regions\RegionBehaviorFactory.cs" />
+    <Compile Include="Regions\RegionManager.WinForms.cs" />
     <Compile Include="Regions\RegionManagerExtensions.cs" />
     <Compile Include="Regions\RegionMemberLifetimeAttribute.cs" />
     <Compile Include="Regions\RegionNavigationContentLoader.cs" />

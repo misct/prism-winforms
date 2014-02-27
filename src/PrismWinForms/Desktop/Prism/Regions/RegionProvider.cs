@@ -34,22 +34,22 @@ namespace Microsoft.Practices.Prism.Regions
 		[DefaultValue((string)null)]
 		public string GetRegionName(Control control)
 		{
-			return control.GetAttachedValue("RegionName") as string;
+			return control.GetAssignedValue(RegionManager.RegionNameProperty) as string;
 		}
 
 		public void SetRegionName(Control control, string value)
 		{
-			control.SetAttachedValue("RegionName", value);
+			control.SetAssignedValue(RegionManager.RegionNameProperty, value);
 		}
 
 		public IRegionManager GetRegionManager(Control control)
 		{
-			return control.GetAttachedValue("RegionManager") as IRegionManager;
+			return control.GetAssignedValue(RegionManager.RegionManagerProperty) as IRegionManager;
 		}
 
 		public void SetRegionManager(Control control, IRegionManager value)
 		{
-			control.SetAttachedValue("RegionManager", value);
+			control.SetAssignedValue(RegionManager.RegionManagerProperty, value);
 		}
 	}
 }
