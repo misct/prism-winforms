@@ -261,6 +261,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ComponentAssignedPropertyHelper.cs" />
+    <Compile Include="ComponentDesignModeHelper.cs" />
     <Compile Include="Events\CompositePresentationEvent.cs">
       <SubType>Code</SubType>
     </Compile>

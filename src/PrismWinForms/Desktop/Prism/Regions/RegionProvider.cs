@@ -20,16 +20,6 @@ namespace Microsoft.Practices.Prism.Regions
 			return (extendee is Control);
 		}
 
-		protected bool DesignModeSafe
-		{
-			get
-			{
-				return
-					base.DesignMode ||
-					LicenseManager.UsageMode == LicenseUsageMode.Designtime;
-			}
-		}
-
 		[Bindable(false)]
 		[DefaultValue((string)null)]
 		public string GetRegionName(Control control)

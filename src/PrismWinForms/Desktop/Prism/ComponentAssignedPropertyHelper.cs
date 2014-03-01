@@ -111,6 +111,9 @@ namespace Microsoft.Practices.Prism
 
 		static void OnAssignedPropertyChanged(Component component, AssignedProperty prop, object oldValue, object newValue)
 		{
+			if (ComponentDesignModeHelper.IsInDesignMode(component))
+				return;
+
 			var pmd = prop.PropertyMetadata;
 			if (pmd == null)
 				return;
