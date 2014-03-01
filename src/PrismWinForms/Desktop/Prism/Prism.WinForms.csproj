@@ -273,6 +273,7 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Modularity\ModuleCatalog.cs" />
+    <Compile Include="ObservableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -282,6 +283,7 @@
     <Compile Include="PropertyMetaData.cs" />
     <Compile Include="Regions\AllActiveRegion.cs" />
     <Compile Include="Regions\Behaviors\AutoPopulateRegionBehavior.cs" />
+    <Compile Include="Regions\Behaviors\DelayedRegionCreationBehavior.cs" />
     <Compile Include="Regions\Behaviors\RegionCreationException.cs" />
     <Compile Include="Regions\Behaviors\RegionCreationException.Desktop.cs" />
     <Compile Include="Regions\DefaultRegionManagerAccessor.cs" />
@@ -315,7 +317,8 @@
     <Compile Include="Regions\RegionBehavior.cs" />
     <Compile Include="Regions\RegionBehaviorCollection.cs" />
     <Compile Include="Regions\RegionBehaviorFactory.cs" />
-    <Compile Include="Regions\RegionManager.WinForms.cs" />
+    <Compile Include="Regions\RegionContext.cs" />
+    <Compile Include="Regions\RegionManager.cs" />
     <Compile Include="Regions\RegionManagerExtensions.cs" />
     <Compile Include="Regions\RegionMemberLifetimeAttribute.cs" />
     <Compile Include="Regions\RegionNavigationContentLoader.cs" />

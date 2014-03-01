@@ -15,6 +15,7 @@
 // places, or events is intended or should be inferred.
 //===================================================================================
 using System;
+using System.ComponentModel;
 using System.Windows;
 using Microsoft.Practices.Prism.Regions.Behaviors;
 
@@ -28,8 +29,8 @@ namespace Microsoft.Practices.Prism.Regions
     /// </summary>
     public static class RegionContext
     {
-        private static readonly DependencyProperty ObservableRegionContextProperty =
-            DependencyProperty.RegisterAttached("ObservableRegionContext", typeof(ObservableObject<object>), typeof(RegionContext), null);
+        private static readonly AssignedProperty ObservableRegionContextProperty =
+            AssignedProperty.RegisterAssigned("ObservableRegionContext", typeof(ObservableObject<object>), typeof(RegionContext), null);
 
         /// <summary>
         /// Returns an <see cref="ObservableObject{T}"/> wrapper around the RegionContext value. The RegionContext
@@ -42,16 +43,16 @@ namespace Microsoft.Practices.Prism.Regions
         /// </summary>
         /// <param name="view">Any view that hold the RegionContext value. </param>
         /// <returns>Wrapper around the Regioncontext value. </returns>
-        public static ObservableObject<object> GetObservableContext(DependencyObject view)
+        public static ObservableObject<object> GetObservableContext(Component view)
         {
             if (view == null) throw new ArgumentNullException("view");
 
-            ObservableObject<object> context = view.GetValue(ObservableRegionContextProperty) as ObservableObject<object>;
+            ObservableObject<object> context = view.GetAssignedValue(ObservableRegionContextProperty) as ObservableObject<object>;
 
             if (context == null)
             {
                 context = new ObservableObject<object>();
-                view.SetValue(ObservableRegionContextProperty, context);
+                view.SetAssignedValue(ObservableRegionContextProperty, context);
             }
            
             return context;

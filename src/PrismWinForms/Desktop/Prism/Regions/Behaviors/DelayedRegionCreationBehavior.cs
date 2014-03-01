@@ -15,8 +15,9 @@
 // places, or events is intended or should be inferred.
 //===================================================================================
 using System;
+using System.ComponentModel;
 using System.Globalization;
-using System.Windows;
+using System.Windows.Forms;
 using Microsoft.Practices.Prism.Properties;
 
 namespace Microsoft.Practices.Prism.Regions.Behaviors
@@ -60,9 +61,9 @@ namespace Microsoft.Practices.Prism.Regions.Behaviors
         /// The element that will host the Region. 
         /// </summary>
         /// <value>The target element.</value>
-        public DependencyObject TargetElement
+        public Control TargetElement
         {
-            get { return this.elementWeakReference != null ? this.elementWeakReference.Target as DependencyObject : null; }
+            get { return this.elementWeakReference != null ? this.elementWeakReference.Target as Control : null; }
             set { this.elementWeakReference = new WeakReference(value); }
         }
 
@@ -101,14 +102,14 @@ namespace Microsoft.Practices.Prism.Regions.Behaviors
 
         private void TryCreateRegion()
         {
-            DependencyObject targetElement = this.TargetElement;
+            Control targetElement = this.TargetElement;
             if (targetElement == null)
             {
                 this.Detach();
                 return;
             }
 
-            if (targetElement.CheckAccess())
+            if (!targetElement.InvokeRequired)
             {
                 this.Detach();
 
@@ -127,7 +128,7 @@ namespace Microsoft.Practices.Prism.Regions.Behaviors
         /// <param name="targetElement">The target element that will host the <see cref="IRegion"/>.</param>
         /// <param name="regionName">Name of the region.</param>
         /// <returns>The created <see cref="IRegion"/></returns>
-        protected virtual IRegion CreateRegion(DependencyObject targetElement, string regionName)
+        protected virtual IRegion CreateRegion(Control targetElement, string regionName)
         {
             if (targetElement == null) throw new ArgumentNullException("targetElement");
             try
@@ -144,27 +145,27 @@ namespace Microsoft.Practices.Prism.Regions.Behaviors
             }
         }
 
-        private void ElementLoaded(object sender, RoutedEventArgs e)
-        {
-            this.UnWireTargetElement();
-            this.TryCreateRegion();
-        }
+		private void ElementLoaded(object sender, EventArgs e)
+		{
+			this.UnWireTargetElement();
+			this.TryCreateRegion();
+		}
 
         private void WireUpTargetElement()
         {
-            FrameworkElement element = this.TargetElement as FrameworkElement;
+            Control element = this.TargetElement;
             if (element != null)
             {
-                element.Loaded += this.ElementLoaded;
+				element.HandleCreated += ElementLoaded;
             }
         }
 
         private void UnWireTargetElement()
         {
-            FrameworkElement element = this.TargetElement as FrameworkElement;
+            Control element = this.TargetElement;
             if (element != null)
             {
-                element.Loaded -= this.ElementLoaded;
+                element.HandleCreated -= this.ElementLoaded;
             }
         }
     }

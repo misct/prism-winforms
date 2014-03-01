@@ -1,4 +1,4 @@
-//===================================================================================
+﻿//===================================================================================
 // Microsoft patterns & practices
 // Composite Application Guidance for Windows Presentation Foundation
 //===================================================================================
@@ -22,7 +22,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Windows;
 using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.Prism.Properties;
 using Microsoft.Practices.Prism.Regions.Behaviors;
@@ -38,7 +37,7 @@ namespace Microsoft.Practices.Prism.Regions
     /// </remarks>
     public class RegionManager : IRegionManager
     {
-        #region Static members (for XAML support)
+		#region Static members (for WinForms support)
 
         private static readonly WeakDelegatesManager updatingRegionsListeners = new WeakDelegatesManager();
 
@@ -53,21 +52,20 @@ namespace Microsoft.Practices.Prism.Regions
         /// will create and adapt a new region for that control, and register it
         /// in the <see cref="IRegionManager"/> with the specified region name.
         /// </remarks>
-        public static readonly DependencyProperty RegionNameProperty = DependencyProperty.RegisterAttached(
-            "RegionName",
-            typeof(string),
-            typeof(RegionManager),
-            new PropertyMetadata(OnSetRegionNameCallback));
-
+		public static readonly AssignedProperty RegionNameProperty = AssignedProperty.RegisterAssigned(
+			"RegionName",
+			typeof(string),
+			typeof(RegionManager),
+			new PropertyMetaData(OnSetRegionNameCallback));
         /// <summary>
         /// Sets the <see cref="RegionNameProperty"/> attached property.
         /// </summary>
         /// <param name="regionTarget">The object to adapt. This is typically a container (i.e a control).</param>
         /// <param name="regionName">The name of the region to register.</param>
-        public static void SetRegionName(DependencyObject regionTarget, string regionName)
+        public static void SetRegionName(Component regionTarget, string regionName)
         {
             if (regionTarget == null) throw new ArgumentNullException("regionTarget");
-            regionTarget.SetValue(RegionNameProperty, regionName);
+            regionTarget.SetAssignedValue(RegionNameProperty, regionName);
         }
 
         /// <summary>
@@ -76,14 +74,14 @@ namespace Microsoft.Practices.Prism.Regions
         /// <param name="regionTarget">The object to adapt. This is typically a container (i.e a control).</param>
         /// <returns>The name of the region that should be created when 
         /// <see cref="RegionManagerProperty"/> is also set in this element.</returns>
-        public static string GetRegionName(DependencyObject regionTarget)
+        public static string GetRegionName(Component regionTarget)
         {
             if (regionTarget == null) throw new ArgumentNullException("regionTarget");
-            return regionTarget.GetValue(RegionNameProperty) as string;
+            return regionTarget.GetAssignedValue(RegionNameProperty) as string;
         }
 
-        private static readonly DependencyProperty ObservableRegionProperty =
-            DependencyProperty.RegisterAttached("ObservableRegion", typeof(ObservableObject<IRegion>), typeof(RegionManager), null);
+        private static readonly AssignedProperty ObservableRegionProperty =
+            AssignedProperty.RegisterAssigned("ObservableRegion", typeof(ObservableObject<IRegion>), typeof(RegionManager), null);
 
 
         /// <summary>
@@ -96,22 +94,22 @@ namespace Microsoft.Practices.Prism.Regions
         /// </summary>
         /// <param name="view">The view that will host the region. </param>
         /// <returns>Wrapper that can hold an <see cref="IRegion"/> value and can notify when the <see cref="IRegion"/> value changes. </returns>
-        public static ObservableObject<IRegion> GetObservableRegion(DependencyObject view)
+        public static ObservableObject<IRegion> GetObservableRegion(Component view)
         {
             if (view == null) throw new ArgumentNullException("view");
 
-            ObservableObject<IRegion> regionWrapper = view.GetValue(ObservableRegionProperty) as ObservableObject<IRegion>;
+            ObservableObject<IRegion> regionWrapper = view.GetAssignedValue(ObservableRegionProperty) as ObservableObject<IRegion>;
 
             if (regionWrapper == null)
             {
                 regionWrapper = new ObservableObject<IRegion>();
-                view.SetValue(ObservableRegionProperty, regionWrapper);
+                view.SetAssignedValue(ObservableRegionProperty, regionWrapper);
             }
 
             return regionWrapper;
         }
 
-        private static void OnSetRegionNameCallback(DependencyObject element, DependencyPropertyChangedEventArgs args)
+		private static void OnSetRegionNameCallback(Component element, AssignedPropertyChangedEventArgs args)
         {
             if (!IsInDesignMode(element))
             {
@@ -119,12 +117,16 @@ namespace Microsoft.Practices.Prism.Regions
             }
         }
 
-        private static void CreateRegion(DependencyObject element)
+        private static void CreateRegion(Component element)
         {
-            IServiceLocator locator = ServiceLocator.Current;
-            DelayedRegionCreationBehavior regionCreationBehavior = locator.GetInstance<DelayedRegionCreationBehavior>();
-            regionCreationBehavior.TargetElement = element;
-            regionCreationBehavior.Attach();
+			var control = element as System.Windows.Forms.Control;
+			if (control == null)
+				throw new ArgumentException("Expected System.Windows.Forms.Control element.", "element");
+
+			IServiceLocator locator = ServiceLocator.Current;
+			DelayedRegionCreationBehavior regionCreationBehavior = locator.GetInstance<DelayedRegionCreationBehavior>();
+			regionCreationBehavior.TargetElement = control;
+			regionCreationBehavior.Attach();
         }
 
         /// <summary>
@@ -138,18 +140,18 @@ namespace Microsoft.Practices.Prism.Regions
         /// will create and adapt a new region for that control, and register it
         /// in the <see cref="IRegionManager"/> with the specified region name.
         /// </remarks>
-        public static readonly DependencyProperty RegionManagerProperty =
-            DependencyProperty.RegisterAttached("RegionManager", typeof(IRegionManager), typeof(RegionManager), null);
+		public static readonly AssignedProperty RegionManagerProperty = 
+			AssignedProperty.RegisterAssigned("RegionManager", typeof(IRegionManager), typeof(RegionManager), null);
 
         /// <summary>
         /// Gets the value of the <see cref="RegionNameProperty"/> attached property.
         /// </summary>
         /// <param name="target">The target element.</param>
         /// <returns>The <see cref="IRegionManager"/> attached to the <paramref name="target"/> element.</returns>
-        public static IRegionManager GetRegionManager(DependencyObject target)
+        public static IRegionManager GetRegionManager(Component target)
         {
             if (target == null) throw new ArgumentNullException("target");
-            return (IRegionManager)target.GetValue(RegionManagerProperty);
+            return (IRegionManager)target.GetAssignedValue(RegionManagerProperty);
         }
 
         /// <summary>
@@ -157,19 +159,19 @@ namespace Microsoft.Practices.Prism.Regions
         /// </summary>
         /// <param name="target">The target element.</param>
         /// <param name="value">The value.</param>
-        public static void SetRegionManager(DependencyObject target, IRegionManager value)
+        public static void SetRegionManager(Component target, IRegionManager value)
         {
             if (target == null) throw new ArgumentNullException("target");
-            target.SetValue(RegionManagerProperty, value);
+            target.SetAssignedValue(RegionManagerProperty, value);
         }
 
         /// <summary>
         /// Identifies the RegionContext attached property.
         /// </summary>
-        public static readonly DependencyProperty RegionContextProperty =
-            DependencyProperty.RegisterAttached("RegionContext", typeof(object), typeof(RegionManager), new PropertyMetadata(OnRegionContextChanged));
+        public static readonly AssignedProperty RegionContextProperty =
+            AssignedProperty.RegisterAssigned("RegionContext", typeof(object), typeof(RegionManager), new PropertyMetaData(OnRegionContextChanged));
 
-        private static void OnRegionContextChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
+        private static void OnRegionContextChanged(Component depObj, AssignedPropertyChangedEventArgs e)
         {
             if (RegionContext.GetObservableContext(depObj).Value != e.NewValue)
             {
@@ -182,10 +184,10 @@ namespace Microsoft.Practices.Prism.Regions
         /// </summary>
         /// <param name="target">The target element.</param>
         /// <returns>The region context to pass to the contained views.</returns>
-        public static object GetRegionContext(DependencyObject target)
+        public static object GetRegionContext(Component target)
         {
             if (target == null) throw new ArgumentNullException("target");
-            return target.GetValue(RegionContextProperty);
+            return target.GetAssignedValue(RegionContextProperty);
         }
 
         /// <summary>
@@ -193,10 +195,10 @@ namespace Microsoft.Practices.Prism.Regions
         /// </summary>
         /// <param name="target">The target element.</param>
         /// <param name="value">The value.</param>
-        public static void SetRegionContext(DependencyObject target, object value)
+        public static void SetRegionContext(Component target, object value)
         {
             if (target == null) throw new ArgumentNullException("target");
-            target.SetValue(RegionContextProperty, value);
+            target.SetAssignedValue(RegionContextProperty, value);
         }
 
         /// <summary>
@@ -233,9 +235,9 @@ namespace Microsoft.Practices.Prism.Regions
             }
         }
 
-        private static bool IsInDesignMode(DependencyObject element)
+        private static bool IsInDesignMode(Component element)
         {
-            return DesignerProperties.GetIsInDesignMode(element);
+			return ComponentDesignModeHelper.IsInDesignMode(element);
         }
 
         #endregion
