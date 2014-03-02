@@ -20,10 +20,8 @@ using System;
 //using System.Windows.Controls.Primitives;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
-#if REGIONS
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Prism.Regions.Behaviors;
-#endif
 using Microsoft.Practices.ServiceLocation;
 
 namespace Microsoft.Practices.Prism
@@ -129,7 +127,7 @@ namespace Microsoft.Practices.Prism
             IModuleManager manager = ServiceLocator.Current.GetInstance<IModuleManager>();
             manager.Run();
         }
-#if REGIONS
+
         /// <summary>
         /// Configures the default region adapter mappings to use in the application, in order
         /// to adapt UI controls defined in XAML to use a region and register it automatically.
@@ -143,10 +141,11 @@ namespace Microsoft.Practices.Prism
             {
 #if SILVERLIGHT
                 regionAdapterMappings.RegisterMapping(typeof(TabControl), ServiceLocator.Current.GetInstance<TabControlRegionAdapter>());
-#endif
+#elif WPF
                 regionAdapterMappings.RegisterMapping(typeof(Selector), ServiceLocator.Current.GetInstance<SelectorRegionAdapter>());
                 regionAdapterMappings.RegisterMapping(typeof(ItemsControl), ServiceLocator.Current.GetInstance<ItemsControlRegionAdapter>());
                 regionAdapterMappings.RegisterMapping(typeof(ContentControl), ServiceLocator.Current.GetInstance<ContentControlRegionAdapter>());
+#endif
             }
 
             return regionAdapterMappings;
@@ -162,6 +161,7 @@ namespace Microsoft.Practices.Prism
 
             if (defaultRegionBehaviorTypesDictionary != null)
             {
+#if WPF
                 defaultRegionBehaviorTypesDictionary.AddIfMissing(BindRegionContextToDependencyObjectBehavior.BehaviorKey,
                                                                   typeof(BindRegionContextToDependencyObjectBehavior));
 
@@ -179,14 +179,14 @@ namespace Microsoft.Practices.Prism
 
                 defaultRegionBehaviorTypesDictionary.AddIfMissing(ClearChildViewsRegionBehavior.BehaviorKey,
                                                   typeof(ClearChildViewsRegionBehavior));
-
+#endif
                 defaultRegionBehaviorTypesDictionary.AddIfMissing(AutoPopulateRegionBehavior.BehaviorKey,
                                                   typeof(AutoPopulateRegionBehavior));
             }
 
             return defaultRegionBehaviorTypesDictionary;
         }
-#endif
+
         /// <summary>
         /// Initializes the shell.
         /// </summary>

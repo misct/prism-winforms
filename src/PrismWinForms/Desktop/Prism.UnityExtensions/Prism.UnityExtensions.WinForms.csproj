@@ -90,6 +90,7 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="Regions\UnityRegionNavigationContentLoader.cs" />
     <Compile Include="UnityBootstrapper.cs" />
   </ItemGroup>
   <ItemGroup>

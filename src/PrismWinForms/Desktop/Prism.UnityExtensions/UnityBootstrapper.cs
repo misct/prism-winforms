@@ -19,15 +19,11 @@ using System.Globalization;
 using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
-#if REGIONS
 using Microsoft.Practices.Prism.Regions;
-#endif
 using Microsoft.Practices.Prism.UnityExtensions.Properties;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
-#if REGIONS
 using Microsoft.Practices.Prism.UnityExtensions.Regions;
-#endif
 using Microsoft.Practices.Prism.PubSubEvents;
 
 namespace Microsoft.Practices.Prism.UnityExtensions
@@ -91,13 +87,12 @@ namespace Microsoft.Practices.Prism.UnityExtensions
 
             this.Logger.Log(Resources.ConfiguringServiceLocatorSingleton, Category.Debug, Priority.Low);
             this.ConfigureServiceLocator();
-#if REGIONS
+
             this.Logger.Log(Resources.ConfiguringRegionAdapters, Category.Debug, Priority.Low);
             this.ConfigureRegionAdapterMappings();
 
             this.Logger.Log(Resources.ConfiguringDefaultRegionBehaviors, Category.Debug, Priority.Low);
             this.ConfigureDefaultRegionBehaviors();
-#endif
 
 			this.Logger.Log(Resources.RegisteringFrameworkExceptionTypes, Category.Debug, Priority.Low);
             this.RegisterFrameworkExceptionTypes();
@@ -106,13 +101,13 @@ namespace Microsoft.Practices.Prism.UnityExtensions
             this.Shell = this.CreateShell();
             if (this.Shell != null)
             {
-#if REGIONS
+
                 this.Logger.Log(Resources.SettingTheRegionManager, Category.Debug, Priority.Low);
-                RegionManager.SetRegionManager(this.Shell, this.Container.Resolve<IRegionManager>());
+                RegionManager.SetRegionManager((System.ComponentModel.Component)this.Shell, this.Container.Resolve<IRegionManager>());
 
                 this.Logger.Log(Resources.UpdatingRegions, Category.Debug, Priority.Low);
                 RegionManager.UpdateRegions();
-#endif
+				
 				this.Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
                 this.InitializeShell();
             }
@@ -164,19 +159,15 @@ namespace Microsoft.Practices.Prism.UnityExtensions
                 RegisterTypeIfMissing(typeof(IServiceLocator), typeof(UnityServiceLocatorAdapter), true);
                 RegisterTypeIfMissing(typeof(IModuleInitializer), typeof(ModuleInitializer), true);
                 RegisterTypeIfMissing(typeof(IModuleManager), typeof(ModuleManager), true);
-#if REGIONS
                 RegisterTypeIfMissing(typeof(RegionAdapterMappings), typeof(RegionAdapterMappings), true);
                 RegisterTypeIfMissing(typeof(IRegionManager), typeof(RegionManager), true);
-#endif
                 RegisterTypeIfMissing(typeof(IEventAggregator), typeof(EventAggregator), true);
-#if REGIONS
                 RegisterTypeIfMissing(typeof(IRegionViewRegistry), typeof(RegionViewRegistry), true);
                 RegisterTypeIfMissing(typeof(IRegionBehaviorFactory), typeof(RegionBehaviorFactory), true);                
                 RegisterTypeIfMissing(typeof(IRegionNavigationJournalEntry), typeof(RegionNavigationJournalEntry), false);
                 RegisterTypeIfMissing(typeof(IRegionNavigationJournal), typeof(RegionNavigationJournal), false);
                 RegisterTypeIfMissing(typeof(IRegionNavigationService), typeof(RegionNavigationService), false);
-                RegisterTypeIfMissing(typeof(IRegionNavigationContentLoader), typeof(UnityRegionNavigationContentLoader), true);                
-#endif
+                RegisterTypeIfMissing(typeof(IRegionNavigationContentLoader), typeof(UnityRegionNavigationContentLoader), true);
 			}
         }
 
