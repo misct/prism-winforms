@@ -20,9 +20,7 @@ using System.ComponentModel.Composition.Hosting;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.MefExtensions.Properties;
 using Microsoft.Practices.Prism.Modularity;
-#if REGIONS
 using Microsoft.Practices.Prism.Regions;
-#endif
 using Microsoft.Practices.ServiceLocation;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,13 +93,13 @@ namespace Microsoft.Practices.Prism.MefExtensions
 
             this.Logger.Log(Resources.ConfiguringServiceLocatorSingleton, Category.Debug, Priority.Low);
             this.ConfigureServiceLocator();
-#if REGIONS
+
             this.Logger.Log(Resources.ConfiguringRegionAdapters, Category.Debug, Priority.Low);
             this.ConfigureRegionAdapterMappings();
 
             this.Logger.Log(Resources.ConfiguringDefaultRegionBehaviors, Category.Debug, Priority.Low);
             this.ConfigureDefaultRegionBehaviors();
-#endif
+
             this.Logger.Log(Resources.RegisteringFrameworkExceptionTypes, Category.Debug, Priority.Low);
             this.RegisterFrameworkExceptionTypes();
 
@@ -109,13 +107,11 @@ namespace Microsoft.Practices.Prism.MefExtensions
             this.Shell = this.CreateShell();
             if (this.Shell != null)
             {
-#if REGIONS
                 this.Logger.Log(Resources.SettingTheRegionManager, Category.Debug, Priority.Low);
-                RegionManager.SetRegionManager(this.Shell, this.Container.GetExportedValue<IRegionManager>());
+                RegionManager.SetRegionManager((System.ComponentModel.Component)this.Shell, this.Container.GetExportedValue<IRegionManager>());
 
                 this.Logger.Log(Resources.UpdatingRegions, Category.Debug, Priority.Low);
                 RegionManager.UpdateRegions();
-#endif
                 this.Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
                 this.InitializeShell();
             }
