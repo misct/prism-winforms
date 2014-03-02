@@ -71,6 +71,7 @@ namespace Microsoft.Practices.Prism.Regions
                         {
                             return false;
                         }
+// TODO: Port to WinForms: Navigation
 #if WPF
                         var frameworkElement = v as FrameworkElement;
                         if (frameworkElement == null)

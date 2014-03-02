@@ -136,6 +136,7 @@ namespace Microsoft.Practices.Prism
             RegionAdapterMappings regionAdapterMappings = ServiceLocator.Current.GetInstance<RegionAdapterMappings>();
             if (regionAdapterMappings != null)
             {
+// TODO: Port to WinForms: Region Adapters
 #if SILVERLIGHT
                 regionAdapterMappings.RegisterMapping(typeof(TabControl), ServiceLocator.Current.GetInstance<TabControlRegionAdapter>());
 #elif WPF
@@ -158,6 +159,7 @@ namespace Microsoft.Practices.Prism
 
             if (defaultRegionBehaviorTypesDictionary != null)
             {
+// TODO: Port to WinForms: Region Behaviors
 #if WPF
                 defaultRegionBehaviorTypesDictionary.AddIfMissing(BindRegionContextToDependencyObjectBehavior.BehaviorKey,
                                                                   typeof(BindRegionContextToDependencyObjectBehavior));

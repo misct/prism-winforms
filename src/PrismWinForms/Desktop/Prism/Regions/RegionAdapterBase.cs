@@ -93,6 +93,7 @@ namespace Microsoft.Practices.Prism.Regions
             IRegionBehaviorFactory behaviorFactory = this.RegionBehaviorFactory;
             if (behaviorFactory != null)
             {
+// TODO: Port to WinForms: Region Behaviors
 #if WPF
                 DependencyObject dependencyObjectRegionTarget = regionTarget as DependencyObject;
 
@@ -159,6 +160,7 @@ namespace Microsoft.Practices.Prism.Regions
 
         private static void SetObservableRegionOnHostingControl(IRegion region, T regionTarget)
         {
+// TODO: Port to WinForms
 #if WPF
             DependencyObject targetElement = regionTarget as DependencyObject;
 

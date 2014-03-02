@@ -213,6 +213,7 @@ namespace Microsoft.Practices.Prism.Regions
             object[] activeViews,
             int currentViewIndex)
         {
+// TODO: Port to WinForms: Navigation
 #if WPF
             var frameworkElement = activeViews[currentViewIndex] as FrameworkElement;
 
@@ -315,6 +316,7 @@ namespace Microsoft.Practices.Prism.Regions
             {
                 invocation(navigationAwareItem);
             }
+// TODO: Port to WinForms: Navigation
 #if WPF
             FrameworkElement frameworkElement = item as FrameworkElement;
             if (frameworkElement != null)
