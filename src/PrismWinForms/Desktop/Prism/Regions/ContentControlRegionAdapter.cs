@@ -17,8 +17,6 @@
 using System;
 using System.Collections.Specialized;
 using System.Linq;
-//using System.Windows.Controls;
-//using System.Windows.Data;
 using Microsoft.Practices.Prism.Properties;
 
 namespace Microsoft.Practices.Prism.Regions

@@ -16,7 +16,6 @@
 //===================================================================================
 using Microsoft.Practices.Prism.PubSubEvents;
 using System;
-//using System.Windows.Threading;
 
 namespace Microsoft.Practices.Prism.Events
 {

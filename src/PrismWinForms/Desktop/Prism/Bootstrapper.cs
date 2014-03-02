@@ -15,9 +15,6 @@
 // places, or events is intended or should be inferred.
 //===================================================================================
 using System;
-//using System.Windows;
-//using System.Windows.Controls;
-//using System.Windows.Controls.Primitives;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
