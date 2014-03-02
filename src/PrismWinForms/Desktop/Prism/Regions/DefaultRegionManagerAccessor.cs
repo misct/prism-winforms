@@ -33,8 +33,8 @@ namespace Microsoft.Practices.Prism.Regions
         /// a delegate that is available in the public API of the class (no private or anonymous delegates allowed).</remarks>
         public event EventHandler UpdatingRegions
         {
-            add { } //add { RegionManager.UpdatingRegions += value; }
-            remove { } //remove { RegionManager.UpdatingRegions -= value; }
+            add { RegionManager.UpdatingRegions += value; }
+            remove { RegionManager.UpdatingRegions -= value; }
         }
 
         /// <summary>
