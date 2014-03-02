@@ -41,8 +41,8 @@ namespace Microsoft.Practices.Prism
         {
             return EnsureAbsolute(uri).AbsolutePath;
         }
-		
-		/// <summary>
+
+        /// <summary>
         /// Parses the query of <paramref name="uri"/> into a dictionary.
         /// </summary>
         /// <param name="uri">The URI.</param>
@@ -52,7 +52,7 @@ namespace Microsoft.Practices.Prism
 
             return new NavigationParameters(query);
         }
-		
+
         private static Uri EnsureAbsolute(Uri uri)
         {
             if (uri.IsAbsoluteUri)
