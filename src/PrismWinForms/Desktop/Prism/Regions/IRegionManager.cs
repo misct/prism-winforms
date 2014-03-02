@@ -14,7 +14,7 @@
 // organization, product, domain name, email address, logo, person,
 // places, or events is intended or should be inferred.
 //===================================================================================
-//using System.Windows.Controls;
+
 namespace Microsoft.Practices.Prism.Regions
 {
     /// <summary>

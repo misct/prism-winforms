@@ -20,7 +20,6 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
-//using System.Windows;
 using Microsoft.Practices.Prism.Properties;
 using Microsoft.Practices.ServiceLocation;
 
@@ -308,13 +307,12 @@ namespace Microsoft.Practices.Prism.Regions
             ItemMetadata itemMetadata = this.GetItemMetadataOrThrow(view);
 
             this.ItemMetadataCollection.Remove(itemMetadata);
-#if WPF
-            DependencyObject dependencyObject = view as DependencyObject;
-            if (dependencyObject != null && Regions.RegionManager.GetRegionManager(dependencyObject) == this.RegionManager)
-            {
-                dependencyObject.ClearValue(Regions.RegionManager.RegionManagerProperty);
-            }
-#endif
+
+			var component = view as Component;
+			if (component != null && Regions.RegionManager.GetRegionManager(component) == this.RegionManager)
+			{
+				component.ClearAssignedValue(Regions.RegionManager.RegionManagerProperty);
+			}
         }
 
         /// <summary>
@@ -393,14 +391,13 @@ namespace Microsoft.Practices.Prism.Regions
                 }
                 itemMetadata.Name = viewName;
             }
-#if WPF
-            DependencyObject dependencyObject = view as DependencyObject;
 
-            if (dependencyObject != null)
+            Component component = view as Component;
+
+            if (component != null)
             {
-                Regions.RegionManager.SetRegionManager(dependencyObject, scopedRegionManager);
+                Regions.RegionManager.SetRegionManager(component, scopedRegionManager);
             }
-#endif
             this.ItemMetadataCollection.Add(itemMetadata);
         }
 

@@ -66,6 +66,39 @@ namespace Microsoft.Practices.Prism
 			SetAssignedValue(component, property, pmd.DefaultValue, false);
 		}
 
+		public static void ClearAssignedValue(this Component component, AssignedProperty property)
+		{
+			if (component == null)
+				throw new ArgumentNullException("component");
+			if (property == null)
+				throw new ArgumentNullException("property");
+
+			ValueMap map;
+			if (!_valueMaps.TryGetValue(component, out map))
+				return;
+
+			ValueInfo vi;
+			if (!map.TryGetValue(property, out vi))
+				return;
+
+			// AutoDispose the old value.
+			if (vi.AutoDispose)
+				DisposeValue(vi.Value);
+
+			// Set default value.
+			var pmd = property.PropertyMetadata;
+			object newValue = (pmd != null ?
+				pmd.DefaultValue :
+				null);
+
+			if (newValue != null)
+				map[property] = new ValueInfo(newValue, false);
+			else
+				map.Remove(property);
+			
+			OnAssignedPropertyChanged(component, property, vi.Value, newValue);
+		}
+
 		static void component_Disposed(object sender, EventArgs e)
 		{
 			var component = sender as Component;

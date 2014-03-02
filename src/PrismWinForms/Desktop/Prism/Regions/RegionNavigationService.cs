@@ -18,7 +18,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-//using System.Windows;
 using Microsoft.Practices.Prism.Properties;
 using Microsoft.Practices.ServiceLocation;
 

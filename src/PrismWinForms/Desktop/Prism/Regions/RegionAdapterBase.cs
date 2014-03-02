@@ -16,7 +16,6 @@
 //===================================================================================
 using System;
 using System.Globalization;
-//using System.Windows;
 using Microsoft.Practices.Prism.Properties;
 using Microsoft.Practices.Prism.Regions.Behaviors;
 
