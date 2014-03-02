@@ -160,18 +160,14 @@ namespace Microsoft.Practices.Prism.Regions
 
         private static void SetObservableRegionOnHostingControl(IRegion region, T regionTarget)
         {
-// TODO: Port to WinForms
-#if WPF
-            DependencyObject targetElement = regionTarget as DependencyObject;
-
-            if (targetElement != null)
-            {
-                // Set the region as a dependency property on the control hosting the region
-                // Because we are using an observable region, the hosting control can detect that the
-                // region has actually been created. This is an ideal moment to hook up custom behaviors
-                RegionManager.GetObservableRegion(targetElement).Value = region;
-            }
-#endif
+			var component = regionTarget as System.ComponentModel.Component;
+			if (component != null)
+			{
+				// Set the region as a dependency property on the control hosting the region
+				// Because we are using an observable region, the hosting control can detect that the
+				// region has actually been created. This is an ideal moment to hook up custom behaviors
+				RegionManager.GetObservableRegion(component).Value = region;
+			}
         }
     }
 }
