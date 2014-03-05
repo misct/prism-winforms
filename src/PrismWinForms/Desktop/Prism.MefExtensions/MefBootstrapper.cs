@@ -112,6 +112,7 @@ namespace Microsoft.Practices.Prism.MefExtensions
 
                 this.Logger.Log(Resources.UpdatingRegions, Category.Debug, Priority.Low);
                 RegionManager.UpdateRegions();
+
                 this.Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
                 this.InitializeShell();
             }

@@ -94,21 +94,20 @@ namespace Microsoft.Practices.Prism.UnityExtensions
             this.Logger.Log(Resources.ConfiguringDefaultRegionBehaviors, Category.Debug, Priority.Low);
             this.ConfigureDefaultRegionBehaviors();
 
-			this.Logger.Log(Resources.RegisteringFrameworkExceptionTypes, Category.Debug, Priority.Low);
+            this.Logger.Log(Resources.RegisteringFrameworkExceptionTypes, Category.Debug, Priority.Low);
             this.RegisterFrameworkExceptionTypes();
 
             this.Logger.Log(Resources.CreatingShell, Category.Debug, Priority.Low);
             this.Shell = this.CreateShell();
             if (this.Shell != null)
             {
-
                 this.Logger.Log(Resources.SettingTheRegionManager, Category.Debug, Priority.Low);
                 RegionManager.SetRegionManager((System.ComponentModel.Component)this.Shell, this.Container.Resolve<IRegionManager>());
 
                 this.Logger.Log(Resources.UpdatingRegions, Category.Debug, Priority.Low);
                 RegionManager.UpdateRegions();
-				
-				this.Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
+
+                this.Logger.Log(Resources.InitializingShell, Category.Debug, Priority.Low);
                 this.InitializeShell();
             }
             
@@ -167,8 +166,8 @@ namespace Microsoft.Practices.Prism.UnityExtensions
                 RegisterTypeIfMissing(typeof(IRegionNavigationJournalEntry), typeof(RegionNavigationJournalEntry), false);
                 RegisterTypeIfMissing(typeof(IRegionNavigationJournal), typeof(RegionNavigationJournal), false);
                 RegisterTypeIfMissing(typeof(IRegionNavigationService), typeof(RegionNavigationService), false);
-                RegisterTypeIfMissing(typeof(IRegionNavigationContentLoader), typeof(UnityRegionNavigationContentLoader), true);
-			}
+                RegisterTypeIfMissing(typeof(IRegionNavigationContentLoader), typeof(UnityRegionNavigationContentLoader), true);                
+            }
         }
 
         /// <summary>
