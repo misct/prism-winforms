@@ -49,24 +49,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\PrismLibrary\Prism.Mvvm\Commands\CompositeCommand.cs">
-      <Link>Commands\CompositeCommand.cs</Link>
-    </Compile>
-    <Compile Include="..\..\PrismLibrary\Prism.Mvvm\Commands\WeakEventHandlerManager.cs">
-      <Link>Commands\WeakEventHandlerManager.cs</Link>
-    </Compile>
-    <Compile Include="..\..\PrismLibrary\Prism.Mvvm\ErrorsContainer.cs">
-      <Link>ErrorsContainer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\PrismLibrary\Prism.Mvvm\IActiveAware.cs">
-      <Link>IActiveAware.cs</Link>
-    </Compile>
-    <Compile Include="..\..\PrismLibrary\Prism.Mvvm\IView.cs">
-      <Link>IView.cs</Link>
-    </Compile>
     <Compile Include="BindableBase.cs" />
+    <Compile Include="Commands\CompositeCommand.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\DelegateCommandBase.cs" />
+    <Compile Include="Commands\WeakEventHandlerManager.cs" />
+    <Compile Include="ErrorsContainer.cs" />
+    <Compile Include="IActiveAware.cs" />
+    <Compile Include="IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -82,9 +72,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="Commands\-linked-files.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
