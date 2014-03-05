@@ -48,38 +48,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.Interactivity\InteractionRequest\Confirmation.cs">
-      <Link>InteractionRequest\Confirmation.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.Interactivity\InteractionRequest\IConfirmation.cs">
-      <Link>InteractionRequest\IConfirmation.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.Interactivity\InteractionRequest\IInteractionRequest.cs">
-      <Link>InteractionRequest\IInteractionRequest.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.Interactivity\InteractionRequest\IInteractionRequestAware.cs">
-      <Link>InteractionRequest\IInteractionRequestAware.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.Interactivity\InteractionRequest\INotification.cs">
-      <Link>InteractionRequest\INotification.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.Interactivity\InteractionRequest\InteractionRequest.cs">
-      <Link>InteractionRequest\InteractionRequest.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.Interactivity\InteractionRequest\InteractionRequestedEventArgs.cs">
-      <Link>InteractionRequest\InteractionRequestedEventArgs.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.Interactivity\InteractionRequest\Notification.cs">
-      <Link>InteractionRequest\Notification.cs</Link>
-    </Compile>
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="InteractionRequest\Confirmation.cs" />
+    <Compile Include="InteractionRequest\IConfirmation.cs" />
+    <Compile Include="InteractionRequest\IInteractionRequest.cs" />
+    <Compile Include="InteractionRequest\IInteractionRequestAware.cs" />
+    <Compile Include="InteractionRequest\INotification.cs" />
+    <Compile Include="InteractionRequest\InteractionRequest.cs" />
+    <Compile Include="InteractionRequest\InteractionRequestedEventArgs.cs" />
+    <Compile Include="InteractionRequest\Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="InteractionRequest\-linked-files.txt" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

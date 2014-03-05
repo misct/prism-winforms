@@ -1,3 +1,0 @@
-﻿This project folder may contain all linked files.
-
-This text file may be used as a place holder so the underlying physical directory makes it into source control.
