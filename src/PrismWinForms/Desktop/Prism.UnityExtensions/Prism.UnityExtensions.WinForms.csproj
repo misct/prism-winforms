@@ -71,15 +71,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.UnityExtensions\UnityBootstrapperExtension.cs">
-      <Link>UnityBootstrapperExtension.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.UnityExtensions\UnityContainerHelper.cs">
-      <Link>UnityContainerHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\PrismLibrary\Desktop\Prism.UnityExtensions\UnityServiceLocatorAdapter.cs">
-      <Link>UnityServiceLocatorAdapter.cs</Link>
-    </Compile>
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
@@ -92,6 +83,9 @@
     </Compile>
     <Compile Include="Regions\UnityRegionNavigationContentLoader.cs" />
     <Compile Include="UnityBootstrapper.cs" />
+    <Compile Include="UnityBootstrapperExtension.cs" />
+    <Compile Include="UnityContainerHelper.cs" />
+    <Compile Include="UnityServiceLocatorAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
